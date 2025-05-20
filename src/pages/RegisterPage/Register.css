@@ -1,0 +1,111 @@
+.register-page {
+  background-image: url("../../assets/download2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.register-container {
+  width: 40vw;
+  max-width: 500px;
+  height: 50vh;
+  padding: 40px;
+  background-color: transparent;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+.register-container:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  background-color: #1f54a3;
+}
+
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ebe6e6;
+}
+
+.register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.register-form label {
+  display: block;
+  width: 100%;
+}
+
+.register-form input {
+  width: 100%;
+  max-width: 600px;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: hsl(0, 21%, 85%);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.register-form button {
+  width: 100%;
+  max-width: 600px;
+  padding: 14px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-form button:hover {
+  background-color: #610f0f;
+  transform: translateY(-2px);
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.direct {
+  text-align: center;
+  color: hsl(0, 21%, 85%) f;
+  font-size: 15px;
+}
+
+.direct a {
+  color: dodgerblue;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
