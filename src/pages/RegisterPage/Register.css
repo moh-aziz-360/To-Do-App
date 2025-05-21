@@ -109,3 +109,62 @@
 p a:hover {
   text-decoration: underline;
 }
+
+/* responsive styles */
+@media (max-width: 768px) {
+  .register-container {
+    width: 80vw; /* Adjusted width for smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 20px; /* Reduced padding for smaller screens */
+  }
+
+  .register-form {
+    gap: 10px; /* Reduced gap between form elements */
+  }
+
+  .register-form input,
+  .register-form button {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+}
+/* Add any additional styles for smaller screens here */
+@media (max-width: 480px) {
+  .register-container {
+    width: 90vw; /* Further adjusted width for very small screens */
+    padding: 10px; /* Further reduced padding for very small screens */
+  }
+
+  .register-form input,
+  .register-form button {
+    padding: 10px; /* Reduced padding for smaller screens */
+    font-size: 14px; /* Smaller font size for smaller screens */
+  }
+}
+/* Add any additional styles for smaller screens as needed */
+@media screen and (max-width: 600px) {
+  .register-container {
+    width: 90vw; /* Adjusted width for smaller screens */
+    padding: 20px; /* Reduced padding for smaller screens */
+  }
+}
+.register-form input,
+.register-form input,
+.register-form button {
+  max-width: 100%; /* Full width on smaller screens */
+  font-size: 14px; /* Smaller font size for smaller screens */
+}
+.register-form button {
+  padding: 12px; /* Reduced padding for smaller screens */
+}
+.register-form input {
+  padding: 12px; /* Reduced padding for smaller screens */
+}
+.register-container h2 {
+  font-size: 24px; /* Smaller font size for smaller screens */
+}
+.register-container {
+  height: auto; /* Allow height to adjust based on content */
+}
+.register-form {
+  gap: 10px; /* Reduced gap between form elements */
+}
