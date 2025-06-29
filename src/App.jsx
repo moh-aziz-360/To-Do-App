@@ -2,13 +2,17 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const App = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (user) {
-    return <Navigate to="/todo" />;
+    return <Outlet />;
   } else {
     return <Navigate to="/login" />;
   }

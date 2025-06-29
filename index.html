@@ -3,11 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Daily To-Do</title>
+    <script>
+      // Apply dark mode immediately if it was previously set
+      (function () {
+        try {
+          const darkModePreference = localStorage.getItem("todoapp_dark_mode");
+          if (darkModePreference === "true") {
+            document.documentElement.classList.add("dark-mode-body");
+            document.body.classList.add("dark-mode-body");
+
+            // Create a style element to force dark mode
+            const style = document.createElement("style");
+            style.textContent = `
+              html, body, #root, .todo-page, .main-content {
+                background-color: #0f172a !important;
+                color: #f1f5f9 !important;
+              }
+            `;
+            document.head.appendChild(style);
+          }
+        } catch (error) {
+          console.error("Error applying initial dark mode:", error);
+        }
+      })();
+    </script>
+    <style>
+      /* Ensure dark mode covers the entire page */
+      .dark-mode-body {
+        background-color: #0f172a !important;
+        color: #f1f5f9 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 100vh !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+        border: none !important;
+        outline: none !important;
+      }
+
+      /* Ensure no white flashes during page load */
+      html,
+      body {
+        transition: none !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Apply dark mode to body after page load as well
+      (function () {
+        try {
+          const darkModePreference = localStorage.getItem("todoapp_dark_mode");
+          if (darkModePreference === "true") {
+            document.documentElement.classList.add("dark-mode-body");
+            document.body.classList.add("dark-mode-body");
+
+            // Force dark mode on all elements
+            const allElements = document.querySelectorAll("*");
+            allElements.forEach((el) => {
+              if (el.tagName !== "SCRIPT" && el.tagName !== "STYLE") {
+                const bg = window.getComputedStyle(el).backgroundColor;
+                if (
+                  bg === "rgb(255, 255, 255)" ||
+                  bg === "#ffffff" ||
+                  bg === "white"
+                ) {
+                  el.style.backgroundColor = "#0f172a";
+                }
+              }
+            });
+
+            // Set a MutationObserver to catch any new elements
+            const observer = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                if (mutation.addedNodes) {
+                  mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) {
+                      // Element node
+                      if (
+                        node.tagName !== "SCRIPT" &&
+                        node.tagName !== "STYLE"
+                      ) {
+                        node.classList.add("dark-mode");
+                      }
+                    }
+                  });
+                }
+              });
+            });
+
+            observer.observe(document.body, {
+              childList: true,
+              subtree: true,
+            });
+          }
+        } catch (error) {
+          console.error("Error applying dark mode after load:", error);
+        }
+      })();
+    </script>
   </body>
 </html>

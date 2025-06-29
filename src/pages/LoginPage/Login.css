@@ -1,48 +1,195 @@
-.login-page {
-  background-image: url("../../assets/Security On-amico.png");
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  margin: 0;
+/* Professional Login Page Styling */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #3b82f6;
+  --primary-lighter: #93c5fd;
+  --secondary: #0f172a;
+  --secondary-light: #1e293b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
 
+/* Base styles */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+  font-family: var(--font-sans);
+  padding: 2rem;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Background patterns */
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(37, 99, 235, 0.03) 0%,
+      transparent 8%
+    ),
+    radial-gradient(
+      circle at 80% 40%,
+      rgba(37, 99, 235, 0.05) 0%,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(37, 99, 235, 0.04) 0%,
+      transparent 12%
+    ),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(37, 99, 235, 0.02) 0%,
+      transparent 5%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(37, 99, 235, 0.03) 0%,
+      transparent 10%
+    );
+  z-index: 0;
+}
+
+.login-content-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 24px; /* Increased border radius for more rounded appearance */
+  box-shadow: var(--shadow-xl);
+  overflow: visible; /* Ensure content is visible */
+  position: relative;
+  z-index: 1;
+  margin: 1rem auto; /* Center the card */
+}
+
+/* Image section */
+.login-image-section {
+  width: 40%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 24px; /* Match parent container */
+  border-bottom-left-radius: 24px; /* Match parent container */
+}
+
+.login-image-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+
+.login-image {
+  width: 80%;
+  max-width: 320px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+  transition: transform var(--transition-normal);
+}
+
+/* Form container */
 .login-container {
-  width: 40vw;
-  max-width: 500px;
-  height: 50vh;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 50%;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-}
-
-.login-container:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
-  background-color: rgba(240, 137, 137, 0.49);
+  background: white;
+  border-top-right-radius: 24px; /* Match parent container */
+  border-bottom-right-radius: 24px; /* Match parent container */
 }
 
 .login-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #ebe6e6; /* Color for the heading */
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
 }
 
+.login-container h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* Form elements */
 .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center form elements horizontally */
-  gap: 20px; /* Space between form elements */
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 0.4rem;
 }
 
 .login-form label {
@@ -52,130 +199,466 @@
 
 .login-form input {
   width: 100%;
-  max-width: 600px; /* Max width for the input fields */
-  padding: 14px; /* Increased padding for inputs */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: hsl(0, 0%, 100%);
-  box-sizing: border-box; /* Ensures padding and border are included in the total width */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added transition for better interaction */
+  padding: 0.8rem 0.8rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  background: var(--gray-50);
+  font-size: 1rem;
+  color: var(--gray-800);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box; /* Ensure padding is included in width */
+  max-height: 3.5rem; /* Limit height to ensure visibility */
+  min-height: 2.5rem; /* Minimum height for usability */
 }
 
 .login-form input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Box shadow on focus */
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
   outline: none;
 }
 
+.login-form input::placeholder {
+  color: var(--gray-400);
+}
+
 .login-form button {
-  width: 100%;
-  max-width: 600px; /* Max width for the button */
-  padding: 14px; /* Increased padding for buttons */
-  background-color: #007bff;
-  color: #fff;
+  margin-top: 0.3rem;
+  padding: 0.6rem 1rem;
+  background: var(--primary);
+  color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transition for better interaction */
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  box-sizing: border-box; /* Ensure padding is included in width */
+  width: 100%; /* Full width button */
+  max-height: 3.5rem; /* Limit height to ensure visibility */
+  min-height: 2.5rem; /* Minimum height for usability */
+  overflow: visible; /* Ensure text is visible */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .login-form button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px); /* Lift effect on hover */
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
 }
 
+.login-form button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow);
+}
+
+.login-form button:disabled {
+  background: var(--gray-400);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Error message */
 .error {
-  color: #dc3545;
-  text-align: center;
-  margin-bottom: 20px; /* Increased margin for better spacing */
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 4px solid var(--danger);
+  color: var(--danger);
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: fadeIn var(--transition-fast);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Register link */
 .direct {
+  margin-top: 2rem;
   text-align: center;
-  color: hsl(0, 21%, 85%);
-  font-size: 15px;
+  color: var(--gray-600);
+  font-size: 0.875rem;
 }
 
 .direct a {
-  color: rgb(11, 98, 185);
-  text-decoration: none;
+  color: var(--primary);
   font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-p a:hover {
+.direct a:hover {
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
-/* Responsive Styles */
+/* Responsive styles */
+@media (max-width: 992px) {
+  .login-content-wrapper {
+    max-width: 800px;
+  }
+
+  .login-container {
+    padding: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .login-container {
-    width: 80vw; /* Adjusted width for smaller screens */
-    height: auto; /* Allow height to adjust based on content */
-    padding: 20px; /* Reduced padding for smaller screens */
+  .login-page {
+    padding: 1.5rem;
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    height: auto; /* Allow page to expand as needed */
+    align-items: flex-start; /* Align to top instead of center */
   }
 
-  .login-form input,
-  .login-form button {
-    max-width: 100%; /* Full width on smaller screens */
+  .login-content-wrapper {
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto; /* Center horizontally */
+    height: auto; /* Allow content to determine height */
+  }
+
+  .login-image-section {
+    width: 100%;
+    padding: 2rem;
+    min-height: 200px;
+    height: auto; /* Allow content to determine height */
+    border-top-left-radius: 20px; /* Match parent container */
+    border-top-right-radius: 20px; /* Add right radius when stacked */
+    border-bottom-left-radius: 0; /* Remove bottom radius when stacked */
+  }
+
+  .login-container {
+    width: 100%;
+    padding: 2rem;
+    height: auto; /* Allow content to determine height */
+    border-top-right-radius: 0; /* Remove top radius when stacked */
+    border-bottom-left-radius: 20px; /* Add left radius when stacked */
+    border-bottom-right-radius: 20px; /* Match parent container */
+  }
+
+  .login-image {
+    max-width: 220px;
   }
 }
+
 @media (max-width: 480px) {
-  .login-container {
-    width: 90vw; /* Further adjusted width for very small screens */
-    padding: 10px; /* Further reduced padding for very small screens */
+  .login-page {
+    padding: 1rem;
+    min-height: auto;
+    height: auto;
+    display: block; /* Change to block layout */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
-  .login-form input,
+  .login-content-wrapper {
+    border-radius: 20px; /* Maintain rounded corners */
+    margin: 1rem auto; /* Center horizontally */
+    max-height: none; /* Remove max height constraint */
+    width: calc(100% - 2rem); /* Account for padding */
+  }
+
+  .login-container {
+    padding: 1.5rem;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-form {
+    gap: 1.25rem;
+  }
+
+  .login-form input {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    height: auto; /* Let content determine height */
+  }
+
   .login-form button {
-    padding: 10px; /* Reduced padding for smaller screens */
-    font-size: 14px; /* Smaller font size for smaller screens */
+    padding: 0.75rem;
+    height: auto; /* Let content determine height */
+  }
+
+  .login-image {
+    max-width: 180px;
   }
 }
-/* Add any additional styles for smaller screens as needed */
-@media screen and (max-width: 600px) {
-  .login-container {
-    width: 90vw; /* Adjusted width for smaller screens */
-    padding: 20px; /* Reduced padding for smaller screens */
+
+@media (max-width: 380px) {
+  .login-page {
+    padding: 0.5rem;
   }
 
-  .login-form input,
-  .login-form button {
-    max-width: 100%; /* Full width on smaller screens */
-    font-size: 14px; /* Smaller font size for smaller screens */
+  .login-content-wrapper {
+    border-radius: 16px; /* Maintain rounded corners */
+    margin: 0.5rem auto; /* Center horizontally */
+    width: calc(100% - 1rem); /* Account for padding */
   }
-  .login-form button {
-    padding: 12px; /* Reduced padding for smaller screens */
+
+  .login-image-section {
+    padding: 1.5rem;
+    min-height: 150px;
   }
-  .login-form input {
-    padding: 12px; /* Reduced padding for smaller screens */
-  }
-  .login-container h2 {
-    font-size: 24px; /* Smaller font size for smaller screens */
-  }
+
   .login-container {
-    height: auto; /* Allow height to adjust based on content */
+    padding: 1.25rem;
   }
-  .login-form {
-    gap: 10px; /* Reduced gap between form elements */
-  }
-  .error {
-    font-size: 14px; /* Smaller font size for error messages */
-  }
-  .direct {
-    font-size: 14px; /* Smaller font size for direct messages */
-  }
-  .direct a {
-    font-size: 14px; /* Smaller font size for links */
-  }
-  .login-form button {
-    font-size: 14px; /* Smaller font size for buttons */
-  }
-  .login-form input {
-    font-size: 14px; /* Smaller font size for inputs */
-  }
+
   .login-container h2 {
-    font-size: 20px; /* Smaller font size for headings */
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .login-form {
+    gap: 1rem;
+  }
+
+  .login-form input {
+    padding: 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .login-form button {
+    padding: 0.625rem;
+    font-size: 0.9375rem;
+  }
+
+  .login-image {
+    max-width: 150px;
+  }
+
+  .direct {
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* For extremely small screens */
+@media (max-width: 320px) {
+  .login-page {
+    padding: 0.25rem;
+    display: block;
+    overflow-y: auto;
+    height: auto;
+    min-height: auto;
+  }
+
+  .login-content-wrapper {
+    border-radius: 12px; /* Maintain rounded corners */
+    margin: 0.25rem auto;
+    width: calc(100% - 0.5rem);
+    transform: none;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .login-image-section {
+    padding: 0.75rem;
+    min-height: 80px;
+    height: auto;
+  }
+
+  .login-container {
+    padding: 0.75rem;
+    height: auto;
+  }
+
+  .login-container h2 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .login-container h2::after {
+    width: 25px;
+    height: 2px;
+    bottom: -4px;
+  }
+
+  .login-form {
+    gap: 0.5rem;
+  }
+
+  .login-form input {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    height: auto;
+    min-height: 1.75rem;
+  }
+
+  .login-form button {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+    border-radius: 6px;
+    height: auto;
+    min-height: 1.75rem;
+  }
+
+  .login-image {
+    max-width: 80px;
+  }
+
+  .direct {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .error {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-height: 600px) {
+  .login-page {
+    min-height: auto;
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .login-image-section {
+    padding: 1rem;
+    min-height: 120px;
+  }
+
+  .login-image {
+    max-width: 120px;
+  }
+}
+
+/* Fix for extremely small height screens */
+@media (max-height: 480px) {
+  .login-page {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .login-image-section {
+    padding: 0.75rem;
+    min-height: 80px;
+  }
+
+  .login-image {
+    max-width: 80px;
+  }
+
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-container h2 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .login-form {
+    gap: 0.625rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* For both small width and height screens */
+@media (max-width: 320px) and (max-height: 480px) {
+  .login-page {
+    padding: 0.25rem;
+    display: block;
+    overflow-y: auto;
+    height: auto;
+    min-height: auto;
+  }
+
+  .login-content-wrapper {
+    flex-direction: column;
+    margin: 0.25rem auto;
+    width: calc(100% - 0.5rem);
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    border-radius: 10px; /* Maintain rounded corners */
+  }
+
+  .login-image-section {
+    padding: 0.375rem;
+    min-height: 50px;
+    height: auto;
+  }
+
+  .login-image {
+    max-width: 50px;
+  }
+
+  .login-container {
+    padding: 0.5rem;
+    height: auto;
+  }
+
+  .login-container h2 {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .login-container h2::after {
+    width: 20px;
+    height: 2px;
+    bottom: -3px;
+  }
+
+  .login-form {
+    gap: 0.375rem;
+  }
+
+  .login-form input {
+    padding: 0.25rem 0.375rem;
+    font-size: 0.75rem;
+    min-height: 1.5rem;
+    max-height: 2rem;
+    border-radius: 4px;
+  }
+
+  .login-form button {
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    min-height: 1.5rem;
+    max-height: 2rem;
+    line-height: 1;
+    border-radius: 4px;
+  }
+
+  .direct {
+    margin-top: 0.5rem;
+    font-size: 0.625rem;
+  }
+
+  .error {
+    padding: 0.375rem;
+    font-size: 0.625rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
   }
 }
